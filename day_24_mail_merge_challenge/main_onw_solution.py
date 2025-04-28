@@ -25,9 +25,13 @@ for i in range(len(names_wout_slash_n)):
     #is about to rewrite with the name used
     with open(f"./Output/ReadyToSend/{names_wout_slash_n[i]}", mode="w") as filetxt: #here we create or modify the file wth each name iterated
         letter = filetxt.write(new_letter) #here we write the letter
+        #the letter is the new letter with the name replaced
+        #and the file is the file created or modified with the name used
+        #the mode "w" is to write the file, if the file exist it will be rewrite
+        #if the file doesn't exist it will be created
+        #the file is the file created or modified with the name used
 
-
-
+    
 
     
 #Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
