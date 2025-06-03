@@ -47,5 +47,3 @@ if will_rain:
 else:
     print("No umbrella needed")
     
-
-    
