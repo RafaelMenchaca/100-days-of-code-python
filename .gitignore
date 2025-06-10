@@ -7,6 +7,7 @@ __pycache__/
 .idea/
 .vscode/
 **/.idea/
+**/.DS_Store
 
 # Environment files
 .env
