@@ -1,4 +1,14 @@
 __pycache__/
-**.pyc
-**.idea
-**.env
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.idea/
+.vscode/
+**/.idea/
+
+# Environment files
+.env
+*/.env
+**/.env
