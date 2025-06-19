@@ -33,7 +33,7 @@ sp = spotipy.Spotify(
         client_secret=CLIENT_SECRET,
         redirect_uri=REDIRECT_URI,
         show_dialog=True,
-        cache_path="token.txt",
+        cache_path=".cache",
         username=USERNAME,
     ))
 
