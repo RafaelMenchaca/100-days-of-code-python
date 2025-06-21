@@ -58,3 +58,19 @@ for song in songs_titles:
 
 print("\n✅ Found URIs:")
 pprint(song_uris)
+
+# Create a new private playlist
+playlist = sp.user_playlist_create(
+    user=user_id,
+    name=f"{input_date} Billboard 100",
+    public=False,
+    description=f"Top 100 songs from Billboard on {input_date}"
+)
+
+playlist_id = playlist["id"]
+print(f"\n✅ Created playlist: {playlist['name']} (ID: {playlist_id})")
+
+# Add songs to the playlist in batches of 100 max (Spotify's limit per call)
+sp.playlist_add_items(playlist_id=playlist_id, items=song_uris)
+print("🎶 All songs added to your new playlist!")
+
