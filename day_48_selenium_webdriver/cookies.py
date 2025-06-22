@@ -26,6 +26,4 @@ wait.until(EC.element_to_be_clickable((By.ID, 'bigCookie')))
 click_cookie = driver.find_element(By.XPATH, value='//*[@id="bigCookie"]')
 click_cookie.click()
 
-
-sleep(10)
 driver.quit()  #Close all windows
