@@ -1,41 +1,3 @@
-# from time import sleep
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-#
-# URL = "https://ozh.github.io/cookieclicker/"
-#
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_experimental_option("detach", True)
-#
-# driver = webdriver.Chrome(options=chrome_options)
-# driver.get(URL)
-#
-# wait = WebDriverWait(driver, 10)
-#
-# def accept_cookies():
-#     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".cc_btn_accept_all")))
-#     accept_cookies = driver.find_element(By.CSS_SELECTOR, value=".cc_btn_accept_all")
-#     print(accept_cookies.is_displayed(), accept_cookies.is_enabled())
-#     accept_cookies.click()
-#
-# accept_cookies()
-#
-# wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "langSelectButton")))
-# language_selector = driver.find_element(By.ID, value="langSelect-EN")
-# language_selector.click()
-#
-# accept_cookies()
-#
-# wait.until(EC.element_to_be_clickable((By.ID, 'bigCookie')))
-# click_cookie = driver.find_element(By.XPATH, value='//*[@id="bigCookie"]')
-# click_cookie.click()
-#
-# sleep(10)
-#
-# driver.quit()  #Close all windows
-from os.path import split
 from time import sleep, time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -105,10 +67,10 @@ price_cursor = driver.find_element(By.ID, value="productPrice0")
 int_price_cursor = int(price_cursor.text)
 print(f"price cursor: {int_price_cursor}")
 
-# if int_number_of_cookies >= int_price_cursor:
-#     cursor = driver.find_element(By.ID, value="product0")
-#     cursor.click()
-#     print("cursor purchased")
+if int_number_of_cookies >= int_price_cursor:
+    cursor = driver.find_element(By.ID, value="product0")
+    cursor.click()
+    print("cursor purchased")
 
 products = driver.find_elements(By.CSS_SELECTOR, value="#products .product.enabled")
 enabled_products = {}
