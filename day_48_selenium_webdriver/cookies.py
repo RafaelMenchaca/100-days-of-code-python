@@ -52,26 +52,29 @@ big_cookie = driver.find_element(By.ID, "bigCookie")
 print("🍪 Starting to click the cookie...")
 
 # ✅ Click the cookie for 10 seconds
-timeout = 60
+timeout = 10
 end_time = sleep_start = sleep(0) or time() + timeout
 while time() < end_time:
     big_cookie.click()
 
-
+# Getting number of cookies we have
 number_of_cookies = driver.find_element(By.ID, value="cookies")
 int_number_of_cookies = int(number_of_cookies.text.split()[0])
 print(f"number of cookies: {int_number_of_cookies}")
 
-
+# Getting price of cursor
 price_cursor = driver.find_element(By.ID, value="productPrice0")
 int_price_cursor = int(price_cursor.text)
 print(f"price cursor: {int_price_cursor}")
 
-if int_number_of_cookies >= int_price_cursor:
-    cursor = driver.find_element(By.ID, value="product0")
-    cursor.click()
-    print("cursor purchased")
+# # buying a cursor
+# if int_number_of_cookies >= int_price_cursor:
+#     cursor = driver.find_element(By.ID, value="product0")
+#     cursor.click()
+#     print("cursor purchased")
 
+
+sleep(3)
 products = driver.find_elements(By.CSS_SELECTOR, value="#products .product.enabled")
 enabled_products = {}
 
