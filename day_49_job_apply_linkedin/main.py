@@ -40,7 +40,7 @@ wait.until(EC.visibility_of_element_located((By.ID, "jobs-apply-button-id")))
 click_apply_job = driver.find_element(By.ID, value="jobs-apply-button-id")
 click_apply_job.click()
 
-
+# ids names
 # ember4034
 #
 # ember4034
