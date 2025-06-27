@@ -45,3 +45,7 @@ click_apply_job.click()
 #
 # ember4034
 
+# ember227
+
+click_next = driver.find_element(By.ID, value="ember227")
+click_next.click()
