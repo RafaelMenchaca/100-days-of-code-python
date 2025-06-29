@@ -12,7 +12,6 @@ FB_EMAIL = os.getenv("PASSWORD")
 FB_PASSWORD = "YOUR FACEBOOK PASSWORD"
 
 driver = webdriver.Chrome()
-
 driver.get("http://www.tinder.com")
 
 sleep(2)
