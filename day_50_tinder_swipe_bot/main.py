@@ -3,8 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 from time import sleep
+import os
+from dotenv import load_dotenv
 
-FB_EMAIL = "YOUR FACEBOOK LOGIN EMAIL"
+load_dotenv()
+
+FB_EMAIL = os.getenv("PASSWORD")
 FB_PASSWORD = "YOUR FACEBOOK PASSWORD"
 
 driver = webdriver.Chrome()
