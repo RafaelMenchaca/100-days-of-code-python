@@ -35,6 +35,7 @@ class InstaFollower:
         self.save_login_prompt = (By.XPATH, "//div[contains(text(), 'Not now')]")
         self.notifications_prompt = (By.XPATH, "// button[contains(text(), 'Not Now')]")
         self.modal = (By.XPATH, MODAL_XPATH)
+        self.followers_button = (By.CSS_SELECTOR, f'[href="/{TARGET}/followers/"]')
 
 
 
@@ -66,9 +67,12 @@ class InstaFollower:
         #         EC.element_to_be_clickable(self.notifications_prompt)
         #     ).click()
 
-    def find_followers(self):
+    def find_followers(self, timeout=10):
         sleep(5)
-        self.driver.get(f"https://www.instagram.com/{TARGET}/followers/")
+        self.driver.get(f"https://www.instagram.com/{TARGET}/")
+        WebDriverWait(self.driver, timeout).until(
+            EC.element_to_be_clickable(self.followers_button)
+        ).click()
         sleep(3)
         for i in range(10):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", self.modal)
