@@ -13,7 +13,6 @@ USERNAME = os.getenv("IG_USERNAME")
 PASSWORD = os.getenv("IG_PASSWORD")
 TARGET = "chefsteps"
 INSTA_URL = "https://www.instagram.com/accounts/login/"
-MODAL_XPATH = "/html/body/div[5]/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]"
 
 # setting the webdriver
 chrome_options = webdriver.ChromeOptions()
@@ -34,7 +33,7 @@ class InstaFollower:
         self.login_button = (By.CSS_SELECTOR, '[type="submit"]')
         self.save_login_prompt = (By.XPATH, "//div[contains(text(), 'Not now')]")
         self.notifications_prompt = (By.XPATH, "// button[contains(text(), 'Not Now')]")
-        self.modal = (By.XPATH, MODAL_XPATH)
+        self.modal = (By.CSS_SELECTOR, "div[role='dialog'] ul")
         self.followers_button = (By.CSS_SELECTOR, f'[href="/{TARGET}/followers/"]')
 
 
@@ -73,9 +72,15 @@ class InstaFollower:
         WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable(self.followers_button)
         ).click()
-        sleep(3)
-        for i in range(10):
-            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", self.modal)
+        WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(self.modal)
+        )
+        modal_window = self.driver.find_element(*self.modal)
+        for _ in range(10):
+            self.driver.execute_script(
+                "arguments[0].scrollTop = arguments[0].scrollHeight",
+                modal_window
+            )
             sleep(2)
 
 
