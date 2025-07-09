@@ -8,3 +8,5 @@ from beautifulsoup4 import BeautifulSoup
 
 load_dotenv()
 # Credentials and constants
+
+GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdArTm_S2cJLmRHQUb1L-zjp6Wwnu1TUgsJnv9dlZzfIwDrWA/viewform?usp=header"
