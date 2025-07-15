@@ -13,6 +13,10 @@ __pycache__/
 .env
 */.env
 **/.env
+venv/
+/venv
+**/venv
+
 
 # Cache files
 .cache
@@ -21,3 +25,11 @@ __pycache__/
 token.txt
 */token.txt
 **/token.txt
+
+# images
+/images
+**/images
+/templates
+**/templates
+/assets
+**/assets
