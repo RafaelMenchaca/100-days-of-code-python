@@ -16,7 +16,10 @@ __pycache__/
 venv/
 /venv
 **/venv
-
+.venv
+**.venv
+.venv1
+**.venv1
 
 # Cache files
 .cache
