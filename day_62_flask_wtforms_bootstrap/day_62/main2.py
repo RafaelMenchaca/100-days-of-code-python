@@ -10,7 +10,8 @@ with open('day_62_flask_wtforms_bootstrap\day_62\cafe-data.csv', newline='', enc
 # print(cafes)
 # print(cafes)
 
-print(cafes[0])
+# print(cafes[0])
 
 for cafe in cafes:
-    print(cafe[0])  # Print the name of each cafe
+    print(cafes[0][1])
+    # print(cafe[0])  # Print the name of each cafe
