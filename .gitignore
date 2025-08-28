@@ -36,3 +36,8 @@ token.txt
 **/templates
 /assets
 **/assets
+
+# database
+*.db
+*.sqlite
+*.sqlite3
