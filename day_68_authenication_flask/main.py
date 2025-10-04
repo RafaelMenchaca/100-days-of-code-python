@@ -7,6 +7,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # CREATE DATABASE
 
@@ -22,13 +24,16 @@ db.init_app(app)
 # CREATE TABLE IN DB
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
     name: Mapped[str] = mapped_column(String(1000))
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 with app.app_context():
@@ -43,37 +48,71 @@ def home():
 @app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        email = request.form.get("email")
+        existing_user = User.query.filter_by(email=email).first()
+        
+        if existing_user:
+            flash("Email already registered. Please use a different email or login.")
+            return redirect(url_for("register"))
+        
         new_user = User(
-            email=request.form.get("email"),
-            password=request.form.get("password"),
+            email=email,
+            password=generate_password_hash(request.form.get("password"), method="pbkdf2:sha256", salt_length=8),
             name=request.form.get("name")
         )
         db.session.add(new_user)
         db.session.commit()
+        login_user(new_user)
         return render_template("secrets.html", name=request.form.get("name"))
-     
+    
+    if current_user.is_authenticated:
+        return redirect(url_for("secrets"))     
     return render_template("register.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+        user = User.query.filter_by(email=email).first()
+        
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for("secrets"))
+        elif user:
+            flash("Wrong password. Please try again.")
+            return redirect(url_for("login"))
+        else:
+            flash("Email not registered. Please check your email or register.")
+            return redirect(url_for("login"))
+    
+    if current_user.is_authenticated:
+        return redirect(url_for("secrets"))
     return render_template("login.html")
 
 
 @app.route('/secrets')
 def secrets():
-    return render_template("secrets.html")
+    if current_user.is_authenticated:
+        return render_template("secrets.html", name=current_user.name)
+    else:
+        return render_template("login.html")
 
 
 @app.route('/logout')
 def logout():
-    pass
+    logout_user()
+    return redirect(url_for("home"))
 
 
-@app.route('/download', methods=["GET"])
+@app.route('/download', methods=["GET", "POST"])
+@login_required
 def download():
-    return send_from_directory(directory="static/files", path="cheat_sheet.pdf")
-
+    if current_user.is_authenticated:
+        return send_from_directory(directory="static/files", path="cheat_sheet.pdf")
+    else:
+        return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
