@@ -1,0 +1,39 @@
+/* ===== General Styles ===== */
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+  min-height: 90vh;
+  background-color: #fdf5f5;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.hero-section h1 span {
+  color: #0C61F7;
+}
+
+.hero-form input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Images */
+.hero-images img {
+  height: 240px;
+  object-fit: cover;
+  border-radius: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-images img:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+}
