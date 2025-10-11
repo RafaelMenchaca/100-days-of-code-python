@@ -18,7 +18,7 @@ driver.get(URL)
 # Max wait time for elements
 wait = WebDriverWait(driver, 10)
 
-# ✅ Function to handle cookie banner if it appears
+#  Function to handle cookie banner if it appears
 def accept_cookies():
     try:
         # Wait until the cookie banner is visible
@@ -26,32 +26,32 @@ def accept_cookies():
         # Find and click the accept button
         accept_button = driver.find_element(By.CSS_SELECTOR, value=".cc_btn_accept_all")
         if accept_button.is_displayed() and accept_button.is_enabled():
-            print("🟢 Accepting cookies...")
+            print("Accepting cookies...")
             accept_button.click()
     except:
-        print("🟡 No cookie banner found or already accepted.")
+        print("No cookie banner found or already accepted.")
 
-# ✅ First cookie banner (on initial page load)
+#  First cookie banner (on initial page load)
 accept_cookies()
 
-# ✅ Wait for language selector to show up
+#  Wait for language selector to show up
 wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "langSelectButton")))
 
-# ✅ Choose English language
+#  Choose English language
 language_selector = driver.find_element(By.ID, value="langSelect-EN")
 language_selector.click()
 
-# ✅ Second cookie banner (reappears after selecting language)
+#  Second cookie banner (reappears after selecting language)
 accept_cookies()
 
-# ✅ Wait for big cookie to appear
+#  Wait for big cookie to appear
 wait.until(EC.element_to_be_clickable((By.ID, 'bigCookie')))
 
-# ✅ Find the cookie and start clicking
+#  Find the cookie and start clicking
 big_cookie = driver.find_element(By.ID, "bigCookie")
-print("🍪 Starting to click the cookie...")
+print("Starting to click the cookie...")
 
-# ✅ Click the cookie for 10 seconds
+#  Click the cookie for 10 seconds
 timeout = 10
 end_time = sleep_start = sleep(0) or time() + timeout
 while time() < end_time:
@@ -86,5 +86,5 @@ print(enabled_products)
 
 
 
-# ✅ Close the browser
+#  Close the browser
 # driver.quit()

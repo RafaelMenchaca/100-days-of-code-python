@@ -3,7 +3,7 @@ import requests
 import smtplib
 import os
 from dotenv import load_dotenv
-from email.message import EmailMessage  # ✅ nuevo import
+from email.message import EmailMessage  #  nuevo import
 
 load_dotenv()
 
@@ -64,10 +64,10 @@ print(message)
 html_message = f"""
 <html>
   <body>
-    <h2>📦 Amazon Price Alert</h2>
+    <h2> Amazon Price Alert</h2>
     <p><strong>{safe_title}</strong></p>
-    <p><strong>💰 Price:</strong> {price}</p>
-    <p><a href="{AMAZON_URL}">🔗 View Product on Amazon</a></p>
+    <p><strong> Price:</strong> {price}</p>
+    <p><a href="{AMAZON_URL}"> View Product on Amazon</a></p>
   </body>
 </html>
 """

@@ -4,7 +4,7 @@ current_time = time.time()
 print(current_time)  # seconds since Jan 1st, 1970
 
 
-# ✅ Step 1: Define the decorator
+#  Step 1: Define the decorator
 def speed_calc_decorator(function):
     def wrapper_function():
         start_time = time.time()
@@ -15,7 +15,7 @@ def speed_calc_decorator(function):
     return wrapper_function
 
 
-# ✅ Step 2: Apply the decorator to your functions
+#  Step 2: Apply the decorator to your functions
 @speed_calc_decorator
 def fast_function():
     for i in range(1000000):
@@ -28,6 +28,6 @@ def slow_function():
         i * i
 
 
-# ✅ Step 3: Call the functions
+#  Step 3: Call the functions
 fast_function()
 slow_function()

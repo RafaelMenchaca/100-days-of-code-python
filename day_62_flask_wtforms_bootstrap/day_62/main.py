@@ -22,7 +22,7 @@ def emoji_scale(symbol: str):
     return [("", "— Select —")] + [(symbol * i, symbol * i) for i in range(1, 6)]
 
 class CafeForm(FlaskForm):
-    # ✅ names match add.html exactly
+    #  names match add.html exactly
     name = StringField('Name', validators=[DataRequired()])
     location = StringField('Location (URL)', validators=[DataRequired(), URL()])
     open_time = SelectField('Open', choices=[("", "— Select —")] + [(t, t) for t in AM_PM_TIMES],
