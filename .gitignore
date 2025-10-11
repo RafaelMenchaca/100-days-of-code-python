@@ -43,3 +43,5 @@ token.txt
 *.db
 *.sqlite
 *.sqlite3
+
+day_91_audiobook/uploads/
