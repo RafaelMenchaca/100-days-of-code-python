@@ -5,6 +5,8 @@ __pycache__/
 
 # IDE
 .idea/
+.idea
+.idea*
 .vscode/
 **/.idea/
 **/.DS_Store
