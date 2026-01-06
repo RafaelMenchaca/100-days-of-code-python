@@ -28,12 +28,17 @@ Throughout the course, I explore topics such as:
 I am documenting each step of the course by committing daily folders and scripts.  
 You can follow my journey through the commits and updates to this repository.
 
-## 📄 License
+---
 
-This repository is for educational purposes only.  
-All course content is © Dr. Angela Yu and the London App Brewery.
+## 📌 Notes
+
+This is a **learning repository**, not a production project.  
+The purpose is to track progress, reinforce concepts, and build a solid foundation for future real-world applications.
 
 ---
 
-Thanks for stopping by!  
-Feel free to clone or fork this repo if you're also following the course 💻
+## ✍️ Author
+
+**Rafael Menchaca**  
+Learning, building, and iterating — one course at a time.
+
